@@ -24,6 +24,8 @@ public class SpaDayController {
         }
     }
 
+
+    // Display the form for user input
     @GetMapping(value="")
     @ResponseBody
     public String customerForm () {
@@ -47,6 +49,8 @@ public class SpaDayController {
         return html;
     }
 
+
+    //Shows the appropriate menu based on the user input
     @PostMapping(value="")
     public String spaMenu(@RequestParam String name, @RequestParam String skintype, @RequestParam String manipedi, Model model) {
 
@@ -62,6 +66,11 @@ public class SpaDayController {
                 appropriateFacials.add(facials.get(i));
             }
         }
+
+        model.addAttribute("name", name);
+        model.addAttribute("skintype", skintype);
+        model.addAttribute("manipedi", manipedi);
+        model.addAttribute("appropriateFacials", appropriateFacials);
 
         return "menu";
     }
