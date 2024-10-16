@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:Error="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Add User Form</title>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
 </head>
 <body>
 
 <h1>Create New User</h1>
-<form method="post" th:action="@{/user}">
+<form method="POST" th:action="@{/user}">
     <div>
         <label for="username">Username:</label>
-        <input type="username" id="username" name="username" required>
+        <input type="username" id="username" name="username" th:value="${username}" required>
     </div>
     <br />
     <div>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" th:value="${email}"required>
     </div>
     <br />
     <div>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password"  required>
     </div>
     <br />
     <div>
         <label for="verifyPassword">Verify Password:</label>
-        <input type="password" id="verifyPassword" name="verifyPassword" required>
+        <input type="verifyPassword" id="verifyPassword" name="verifyPassword" required>
+        <p class="error" th:if="error" th:text="${error}"></p>
     </div>
     <br />
+
     <div>
         <input type="submit" value="Create User">
     </div>
