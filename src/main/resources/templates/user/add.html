@@ -6,25 +6,41 @@
   <title>Sign Up</title>
 </head>
 <body>
-<form method = 'post' th:action="@{/user}">
+<form method = 'post' th:action="@{/user/add}" th:object="${user}">
   <label>
     Username:
-    <input type = 'text' name = 'username' th:value="${username}">
+    <input type = 'text' th:field="${user.username}">
+    <p class="errors" th:errors="${user.username}">Username Error</p>
+    <br />
+    <br />
   </label>
+
+
 
   <label>
     Email:
-    <input type = 'email' name = 'email' th:value="${email}">
+    <input type = 'email' th:field="${user.email}">
+    <p class="errors" th:errors="${user.email}">Email Error</p>
+    <br />
+    <br />
   </label>
+
+
 
   <label>
     Password:
-    <input type = 'password' name = 'password'>
+    <input type = 'password' th:field="${user.password}">
+    <p class="errors" th:errors="${user.password}">Password Error</p>
+    <br />
+    <br />
   </label>
+
+
 
   <label>
     Verify Password:
     <input type = 'password' name = 'verify'>
+    <br />
   </label>
 
   <p th:text="${error}"></p>
